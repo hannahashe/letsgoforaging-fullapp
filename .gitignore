@@ -12,7 +12,7 @@ db.sqlite3-journal
 # Environment
 .env
 .venv
-env/
+env/pip
 venv/
 ENV/
 env.bak/
