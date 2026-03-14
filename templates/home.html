@@ -2,6 +2,86 @@
 
 {% block content %}
 
-<h1>Welcome to Let's Go Foraging</h1>
+<section class="hero">
+
+<h1>Let's Go Foraging</h1>
+
+<p>
+Discover edible plants, mushrooms, and wild foods
+on guided woodland workshops.
+</p>
+
+<a href="/workshops/">View Upcoming Workshops</a>
+
+</section>
+
+
+<section class="workshops">
+
+<h2>Upcoming Workshops</h2>
+
+{% for workshop in upcoming_workshops %}
+
+<article class="workshop-card">
+
+<h3>
+<a href="{% url 'workshop_detail' workshop.slug %}">
+{{ workshop.title }}
+</a>
+</h3>
+
+<p>{{ workshop.date }} — {{ workshop.start_time }}</p>
+
+<p>{{ workshop.location_name }}</p>
+
+<p>£{{ workshop.price }}</p>
+
+</article>
+
+{% empty %}
+
+<p>No upcoming workshops yet.</p>
+
+{% endfor %}
+
+<a href="/workshops/">See all workshops →</a>
+
+</section>
+
+
+<section class="about">
+
+<h2>About the Workshops</h2>
+
+<p>
+Learn to safely identify edible plants, mushrooms,
+and wild foods on guided woodland walks.
+These workshops are beginner-friendly and focus on
+ecological awareness and sustainable harvesting.
+</p>
+
+</section>
+
+
+<section class="reviews">
+
+<h2>What People Say</h2>
+
+<blockquote>
+"One of the most fascinating workshops I've ever attended.
+I now notice edible plants everywhere!"
+</blockquote>
+
+</section>
+
+
+<section class="cta">
+
+<h2>Join a Workshop</h2>
+
+<a href="/workshops/">Browse Upcoming Dates</a>
+
+</section>
+
 
 {% endblock %}
