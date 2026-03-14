@@ -1,0 +1,17 @@
+<h1>{{ workshop.title }}</h1>
+
+<p>{{ workshop.date }} – {{ workshop.start_time }}</p>
+
+<p>{{ workshop.location_name }}</p>
+
+<p>{{ workshop.description }}</p>
+
+<p>Price: £{{ workshop.price }}</p>
+
+{% if workshop.ticket_url %}
+
+<a href="{{ workshop.ticket_url }}">
+Book Ticket
+</a>
+
+{% endif %}
