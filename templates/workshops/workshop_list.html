@@ -1,0 +1,25 @@
+<h1>Upcoming Foraging Workshops</h1>
+
+{% for workshop in workshops %}
+
+<article>
+
+<h2>
+<a href="{% url 'workshop_detail' workshop.slug %}">
+{{ workshop.title }}
+</a>
+</h2>
+
+<p>{{ workshop.date }} – {{ workshop.start_time }}</p>
+
+<p>{{ workshop.location_name }}</p>
+
+<p>£{{ workshop.price }}</p>
+
+</article>
+
+{% empty %}
+
+<p>No workshops currently scheduled.</p>
+
+{% endfor %}
