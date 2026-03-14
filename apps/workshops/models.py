@@ -3,12 +3,13 @@ from django.utils.text import slugify
 
 
 class Workshop(models.Model):
+
     SEASON_CHOICES = [
         ("spring", "Spring"),
         ("summer", "Summer"),
         ("fall", "Fall"),
         ("winter", "Winter"),
-    ] 
+    ]
 
     STATUS_CHOICES = [
         ("draft", "Draft"),
@@ -17,13 +18,22 @@ class Workshop(models.Model):
     ]
 
     title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255, unique=True)
+
+    slug = models.SlugField(
+        max_length=255,
+        unique=True,
+        blank=True
+    )
 
     description = models.TextField()
 
     date = models.DateField()
     start_time = models.TimeField()
-    season = models.IntegerField(choices=SEASON_CHOICES)
+
+    season = models.CharField(
+        max_length=10,
+        choices=SEASON_CHOICES
+    )
 
     location_name = models.CharField(max_length=255)
     location_description = models.TextField()
@@ -32,6 +42,11 @@ class Workshop(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
     max_participants = models.PositiveIntegerField()
+    spaces_available = models.PositiveIntegerField(blank=True, null=True)
+
+    image = models.ImageField(upload_to="workshops/", blank=True, null=True)
+
+    ticket_url = models.URLField(blank=True)
 
     status = models.CharField(
         max_length=10,
@@ -39,17 +54,12 @@ class Workshop(models.Model):
         default="draft"
     )
 
-    spaces_available = models.PositiveIntegerField(blank=True, null=True)
-
-    image = models.ImageField(upload_to="workshops/", blank=True, null=True)
-
-    ticket_url = models.URLField(blank=True)
-
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ["date"]
+        ordering = ["date", "start_time"]
+        verbose_name_plural = "Workshops"
 
     def save(self, *args, **kwargs):
 
