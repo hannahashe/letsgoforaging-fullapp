@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Foraging Workshops{% endblock %}</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+
+<body>
+
+{% include "includes/navbar.html" %}
+
+<main>
+{% block content %}
+{% endblock %}
+</main>
+
+{% include "includes/footer.html" %}
+
+</body>
+
+</html>
