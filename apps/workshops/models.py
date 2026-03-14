@@ -2,6 +2,18 @@ from django.db import models
 from django.utils.text import slugify
 
 
+class WorkshopCategory(models.Model):
+
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
+
+    class Meta:
+        verbose_name_plural = "Workshop Categories"
+
+    def __str__(self):
+        return self.name
+
+
 class Workshop(models.Model):
 
     SEASON_CHOICES = [
@@ -53,6 +65,15 @@ class Workshop(models.Model):
         choices=STATUS_CHOICES,
         default="draft"
     )
+
+    category = models.ForeignKey(
+        WorkshopCategory,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="workshops"
+        )
+
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
