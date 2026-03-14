@@ -16,13 +16,9 @@ Including another URLconf
 """
 
 from django.shortcuts import render
-from django.urls import path
-
-
-def home(request):
-    return render(request, "home.html")
+from django.urls import path, include
 
 
 urlpatterns = [
-    path("", home, name="home"),
+    path("", include("apps.core.urls")),
 ]
