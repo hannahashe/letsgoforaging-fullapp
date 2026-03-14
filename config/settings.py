@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'apps.reviews',
     'apps.gallery',
     'apps.contact',
+    'apps.core',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,11 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATES[0]["OPTIONS"]["context_processors"] += [
+    "apps.core.context_processors.site_settings"
+]
+
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
