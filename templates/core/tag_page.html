@@ -1,0 +1,26 @@
+{% extends "layouts/page.html" %}
+
+{% block page_title %}
+Tag: {{ tag.name }}
+{% endblock %}
+
+{% block content %}
+
+<h2>Workshops</h2>
+
+{% for workshop in workshops %}
+<a href="{% url 'workshop_detail' workshop.slug %}">
+{{ workshop.title }}
+</a>
+{% endfor %}
+
+
+<h2>Blog Posts</h2>
+
+{% for post in posts %}
+<a href="{% url 'blog_detail' post.slug %}">
+{{ post.title }}
+</a>
+{% endfor %}
+
+{% endblock %}
