@@ -2,6 +2,9 @@ from django.db import models
 from django.utils.text import slugify
 from apps.workshops.models import Workshop
 from apps.core.models import Tag
+from django.contrib.contenttypes.fields import GenericRelation
+from apps.core.models import TaggedItem
+from taggit.managers import TaggableManager
 
 
 class BlogPost(models.Model):
@@ -47,11 +50,7 @@ class BlogPost(models.Model):
         default="draft"
     )
 
-    tags = models.ManyToManyField(
-        Tag,
-        blank=True,
-        related_name="blog_posts"
-        )
+    tags = TaggableManager(blank=True)
 
     published_date = models.DateTimeField(
         blank=True,
