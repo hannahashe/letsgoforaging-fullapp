@@ -26,6 +26,11 @@ class GalleryImage(models.Model):
         help_text="Show on homepage or promotional sections"
     )
 
+    order = models.PositiveIntegerField(
+        default=0,
+        help_text="Lower numbers appear first"
+    )
+
     is_public = models.BooleanField(
         default=True,
         help_text="Visible to all users if True, otherwise only staff can see"
@@ -35,7 +40,7 @@ class GalleryImage(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ["-created_at"]
+        ordering = ["order", "-created_at"]
 
     def __str__(self):
         if self.title:
