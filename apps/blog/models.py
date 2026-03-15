@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from apps.workshops.models import Workshop
+from apps.core.models import Tag
 
 
 class BlogPost(models.Model):
@@ -45,6 +46,12 @@ class BlogPost(models.Model):
         choices=STATUS_CHOICES,
         default="draft"
     )
+
+    tags = models.ManyToManyField(
+        Tag,
+        blank=True,
+        related_name="blog_posts"
+        )
 
     published_date = models.DateTimeField(
         blank=True,
