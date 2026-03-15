@@ -14,4 +14,16 @@
 Book Ticket
 </a>
 
+<h2>Photos</h2>
+
+<div class="gallery-grid">
+
+{% for image in workshop.gallery_images.all %}
+
+<img src="{{ image.image.url }}">
+
+{% endfor %}
+
+</div>
+
 {% endif %}
