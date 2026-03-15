@@ -7,6 +7,7 @@ from django.utils.html import format_html
 class WorkshopAdmin(admin.ModelAdmin):
 
     list_display = (
+        "image_preview",
         "title",
         "date",
         "start_time",
@@ -81,5 +82,12 @@ class WorkshopAdmin(admin.ModelAdmin):
                 "updated_at",
             )
         }),
+    )
 
-)
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html(
+                '<img src="{}" style="height:60px;border-radius:4px;" />',
+                obj.image.url
+                )
+            return "-"
