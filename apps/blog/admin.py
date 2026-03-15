@@ -29,6 +29,7 @@ class BlogPostAdmin(admin.ModelAdmin):
                 "slug",
                 "excerpt",
                 "content",
+                "tags",
             )
         }),
 
