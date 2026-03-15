@@ -1,0 +1,26 @@
+{% extends "layouts/page.html" %}
+
+{% block page_title %}
+{{ post.title }}
+{% endblock %}
+
+{% block content %}
+
+{% if post.featured_image %}
+<img src="{{ post.featured_image.url }}">
+{% endif %}
+
+<p>{{ post.content }}</p>
+
+{% if post.workshop %}
+
+<p>
+Related workshop:
+<a href="{% url 'workshop_detail' post.workshop.slug %}">
+{{ post.workshop.title }}
+</a>
+</p>
+
+{% endif %}
+
+{% endblock %}

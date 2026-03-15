@@ -1,0 +1,29 @@
+{% extends "layouts/page.html" %}
+
+{% block page_title %}
+Blog
+{% endblock %}
+
+{% block content %}
+
+{% for post in posts %}
+
+<article>
+
+<h2>
+<a href="{% url 'blog_detail' post.slug %}">
+{{ post.title }}
+</a>
+</h2>
+
+{% if post.featured_image %}
+<img src="{{ post.featured_image.url }}">
+{% endif %}
+
+<p>{{ post.excerpt }}</p>
+
+</article>
+
+{% endfor %}
+
+{% endblock %}
