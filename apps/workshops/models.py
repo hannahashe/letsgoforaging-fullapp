@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from apps.core.models import Tag
 
 
 class WorkshopCategory(models.Model):
@@ -46,6 +47,12 @@ class Workshop(models.Model):
         max_length=10,
         choices=SEASON_CHOICES
     )
+
+    tags = models.ManyToManyField(
+        Tag,
+        blank=True,
+        related_name="workshops"
+        )
 
     location_name = models.CharField(max_length=255)
     location_description = models.TextField()
