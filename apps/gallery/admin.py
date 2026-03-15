@@ -24,6 +24,8 @@ class GalleryImageAdmin(admin.ModelAdmin):
         "caption",
     )
 
+    ordering = ("order",)
+
     def image_preview(self, obj):
         if obj.image:
             return format_html(
