@@ -8,6 +8,17 @@
 <a href="{% url 'workshop_detail' workshop.slug %}">
 {{ workshop.title }}
 </a>
+
+<div class="tags">
+
+{% for tag in workshop.tags.all %}
+<a href="{% url 'tag_page' tag.slug %}">
+{{ tag.name }}
+</a>
+{% endfor %}
+
+</div>
+
 </h2>
 
 <p>{{ workshop.date }} – {{ workshop.start_time }}</p>

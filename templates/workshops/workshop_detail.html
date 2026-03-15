@@ -26,11 +26,16 @@ Book Ticket
 
 </div>
 
+<div class="tags">
+
 {% for tag in workshop.tags.all %}
-<a href="{% url 'tag_detail' tag.slug %}">
+<a href="{% url 'tag_page' tag.slug %}">
 {{ tag.name }}
 </a>
 {% endfor %}
+
+</div>
+
 
 
 {% endif %}
