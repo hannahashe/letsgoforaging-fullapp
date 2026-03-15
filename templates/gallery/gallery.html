@@ -1,0 +1,27 @@
+{% extends "layouts/page.html" %}
+
+{% block page_title %}
+Gallery
+{% endblock %}
+
+{% block content %}
+
+<div class="gallery-grid">
+
+{% for image in images %}
+
+<figure>
+
+<img src="{{ image.image.url }}" alt="{{ image.title }}">
+
+{% if image.caption %}
+<figcaption>{{ image.caption }}</figcaption>
+{% endif %}
+
+</figure>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
