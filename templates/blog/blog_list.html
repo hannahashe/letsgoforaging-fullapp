@@ -20,6 +20,16 @@ Blog
 <img src="{{ post.featured_image.url }}">
 {% endif %}
 
+<div class="tags">
+
+{% for tag in post.tags.all %}
+<a href="{% url 'tag_page' tag.slug %}">
+{{ tag.name }}
+</a>
+{% endfor %}
+
+</div>
+
 <p>{{ post.excerpt }}</p>
 
 </article>
