@@ -62,13 +62,13 @@ class WorkshopAdmin(admin.ModelAdmin):
     readonly_fields = ("created_at", "updated_at")
 
     fieldsets = (
-
         ("Workshop Info", {
             "fields": (
                 "title",
                 "slug",
                 "description",
                 "season",
+                "tags",
                 "status",
             )
         }),
