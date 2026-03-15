@@ -1,9 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
 from apps.workshops.models import Workshop
-from apps.core.models import Tag
-from django.contrib.contenttypes.fields import GenericRelation
-from apps.core.models import TaggedItem
 from taggit.managers import TaggableManager
 
 
